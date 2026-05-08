@@ -67,6 +67,15 @@ body{
 </style>
 </head>
 <body>
+    <button onclick="playSound()">再生</button>
+
+<audio id="bgm" src="sound.mp3"></audio>
+
+<script>
+function playSound() {
+  document.getElementById("bgm").play();
+}
+</script>
 
 <div id="topBar">
 
