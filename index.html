@@ -133,7 +133,7 @@ let lastMoveTime = Date.now();
 let remain = 60;
 let timerStarted = false;
 
-let currentFacing = "user";
+let currentFacing = "environment";
 let currentStream = null;
 
 let camera = null;
@@ -155,13 +155,13 @@ async function start(){
     startBtn.style.display="none";
 
     currentStream =
-    await navigator.mediaDevices.getUserMedia({
-        video:{
-            facingMode:　currentStream,
-            width:640,
-            height:480
-        }
-    });
+await navigator.mediaDevices.getUserMedia({
+    video:{
+        facingMode: currentFacing,
+        width:640,
+        height:480
+    }
+});
 
     video.srcObject = currentStream;
 
@@ -333,7 +333,6 @@ document
     .getElementById("mainImage")
     .src = url;
 });
-<!-- update -->
 </script>
 </body>
 </html>
