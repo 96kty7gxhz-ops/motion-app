@@ -127,6 +127,10 @@ const timerText = document.getElementById("timer");
 const statusText = document.getElementById("status");
 const startBtn = document.getElementById("startBtn");
 
+const countSound = new Audio("count.mp3");
+const stopSound = new Audio("stop.mp3");
+const finishSound = new Audio("finish.mp3");
+
 let prevY = null;
 let lastMoveTime = Date.now();
 
@@ -211,6 +215,7 @@ await navigator.mediaDevices.getUserMedia({
             statusText.style.color = "red";
 
             speak("どうして止めているのですか？動かしてください");
+            stopSound.play();
 
             lastMoveTime = Date.now();
         }
@@ -242,10 +247,13 @@ await navigator.mediaDevices.getUserMedia({
     if(remain <= 10 && remain > 0){
 
         speak(remain.toString());
+
+        countSound.play();
     }
 
             if(remain === 0){ 
                speak("ほら、出してください、びゅ、びゅうぅううぅぅぅぅぅ");
+                finishSound.play();
 
     statusText.innerText = "終了";
     statusText.style.color = "white";
